@@ -84,8 +84,15 @@ from pyrpy.plot_distribution import plot_distribution
 from pyrpy.plot_hypothesis import plot_hypothesis
 
 import numpy as np
-from scipy.misc import comb
-from scipy.misc import factorial as spfactorial
+
+""" Referene: https://github.com/scipy/scipy/releases """
+import scipy
+if scipy.__version__.split('.')[0] == '0':
+    from scipy.misc import comb
+    from scipy.misc import factorial as spfactorial
+else:
+    from scipy.special import comb
+    from scipy.special import factorial as spfactorial
 
 
 # ==============================================================================
