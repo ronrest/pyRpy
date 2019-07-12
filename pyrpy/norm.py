@@ -116,7 +116,7 @@ def dnorm(x, mean=0, sd=1, log=False):
         return norm.pdf(x, loc=mean, scale=sd)
 
 
-def qnorm(q, mean=0, sd=1, lowertail=True):
+def qnorm(p, mean=0, sd=1, lowertail=True):
     """
     ============================================================================
                                                                          qnorm()
@@ -142,12 +142,12 @@ def qnorm(q, mean=0, sd=1, lowertail=True):
     # TODO: check that q is between 0.0 and 1.0
 
     if lowertail:
-        return norm.ppf(q=q, loc=mean, scale=sd)
+        return norm.ppf(q=p, loc=mean, scale=sd)
     else:
-        return norm.isf(q=q, loc=mean, scale=sd)
+        return norm.isf(q=p, loc=mean, scale=sd)
 
 
-def pnorm(x, mean=0, sd=1, lowertail=True, log=False):
+def pnorm(q, mean=0, sd=1, lowertail=True, log=False):
     """
     ============================================================================
                                                                         pnorm()
@@ -176,11 +176,11 @@ def pnorm(x, mean=0, sd=1, lowertail=True, log=False):
     ============================================================================
     """
     if lowertail and not log:
-        return norm.cdf(x, loc=mean, scale=sd)
+        return norm.cdf(x=q, loc=mean, scale=sd)
     elif not lowertail and not log:
-        return norm.sf(x, loc=mean, scale=sd)
+        return norm.sf(x=q, loc=mean, scale=sd)
     elif lowertail and log:
-        return norm.logcdf(x, loc=mean, scale=sd)
+        return norm.logcdf(x=q, loc=mean, scale=sd)
     else:
-        return norm.logsf(x, loc=mean, scale=sd)
+        return norm.logsf(x=q, loc=mean, scale=sd)
 
